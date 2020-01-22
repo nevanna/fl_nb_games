@@ -54,6 +54,7 @@ flutter:
     - images/geometry.png
     - images/programming.png
     - images/puzzle.png
+    - games_icon/numbers/
 
   #   - images/a_dot_ham.jpeg
 

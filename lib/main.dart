@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:url_launcher/url_launcher.dart';
 import "package:nb_games/screens/screen.dart";
-// void main() => runApp(MyApp());
+
 
 Map<int, Color> color =
 {
@@ -22,7 +22,6 @@ Map<int, Color> color =
 MaterialColor colorCustom = MaterialColor(0xFF6A5AC9, color);
 
 
-
 void main(){
   runApp( MaterialApp(
     title: 'Funexpected math',
@@ -33,32 +32,6 @@ void main(){
     debugShowCheckedModeBanner: false,
     ));
 }
-
-
-
-// class MyApp extends StatelessWidget {
-//   // This widget is the root of your application.
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       title: 'Funexpected math',
-//       theme: ThemeData(
-//         // This is the theme of your application.
-//         //
-//         // Try running your application with "flutter run". You'll see the
-//         // application has a blue toolbar. Then, without quitting the app, try
-//         // changing the primarySwatch below to Colors.green and then invoke
-//         // "hot reload" (press "r" in the console where you ran "flutter run",
-//         // or simply save your changes to "hot reload" in a Flutter IDE).
-//         // Notice that the counter didn't reset back to zero; the application
-//         // is not restarted.
-        
-//       ),
-//       // home: MyHomePage(title: 'List of games'),
-      
-//     );
-//   }
-// }
 
 class ImageWidget extends StatelessWidget{
   ImageWidget(this.file_name);
@@ -105,58 +78,53 @@ class MyRaw extends StatelessWidget{
   }
 }
 
-// class MyScreen extends MaterialPageRoute<Null>{
-//   MyScreen(this.title, this.color);
-//   final String title;
-//   final dynamic color;
-//     :super(builder : (BuildContext context){
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(title),
-//         backgroundColor: color,
-//       ),
-//     );
-//   }
-// }
 
 class TryGes extends StatelessWidget{
+  final String title;
+  final dynamic color;
+  final dynamic image;
+  TryGes(this.title, this.color, this.image);
   @override
   Widget build(BuildContext context){
     return Container(
      child: GestureDetector(
        onTap: () {
          print("Cliked");
-         Navigator.push(context, PageTwo());
+         Navigator.push(context, PageTwoMini(title, color));
        },
-       child: Container(
-         height: 70.0,
-         width: 100.0,
-         padding: EdgeInsets.all(20),
-         decoration: BoxDecoration(
-           color: Colors.purpleAccent,
-           borderRadius: BorderRadius.circular(15),
-         ),
-         child: Text("Click me!"),
-       ),
+       child: MyRaw(title, color, image),
      ),
     );
   }
 }
 
 
+
+class Minigames{
+  final String category;
+  final String img;
+  final String name;
+  final Color color;
+  final String body;
+  Minigames(this.category, this.img,this.name, this.color, this.body);
+}
+
 class PageTwo extends MaterialPageRoute<Null>{
-  PageTwo(): super(builder: (BuildContext context){
+  final String text;
+  final Color color;
+  PageTwo(this.text, this.color): super(builder: (BuildContext context){
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        backgroundColor: color,
         elevation: 1.0,
+        title: Text(text),
       ),
       body: Center(
         child: RaisedButton(
           onPressed: (){
             Navigator.push(context, PageThree());
           },
-          child: Text("Go to page Three") ,
+          child: Text(text) ,
         ),
       ),
     );
@@ -201,17 +169,17 @@ class MyPage extends StatelessWidget{
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: new AppBar(
+        elevation: 2.0,
         title: new Text(name),
         ),
 
       body: ListView(
        children: [
-         MyRaw("Logic", Colors.green, "images/logic.png"),
-         MyRaw("Numbers", Colors.red, "images/numbers.png"),
-         MyRaw("Geometry", Colors.blue, "images/geometry.png"),
-         MyRaw("Programming", Colors.orange, "images/programming.png"),
-         MyRaw("Puzzle", Colors.deepPurple, "images/puzzle.png"),
-         TryGes(),
+         TryGes("Logic", Colors.green, "images/logic.png"),
+         TryGes("Numbers", Colors.red, "images/numbers.png"),
+         TryGes("Geometry", Colors.blue, "images/geometry.png"),
+         TryGes("Programming", Colors.orange, "images/programming.png"),
+         TryGes("Puzzle", Colors.deepPurple, "images/puzzle.png"),
          ],
          scrollDirection: Axis.vertical,
          reverse: false,
