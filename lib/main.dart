@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 import 'package:url_launcher/url_launcher.dart';
 import "package:nb_games/screens/screen.dart";
-
+import 'package:google_fonts/google_fonts.dart';
 
 Map<int, Color> color =
 {
@@ -65,7 +65,7 @@ class MyRaw extends StatelessWidget{
         children: [
           ImageWidget(image_name),
           Padding(
-            padding: EdgeInsets.fromLTRB(90, 0, 0, 0),
+            padding: EdgeInsets.fromLTRB(20, 0, 0, 0),
             child: Center(
               child: Text(text),
               ),
@@ -74,6 +74,7 @@ class MyRaw extends StatelessWidget{
       ),
       color: color,
       height: 200,
+      
     );
   }
 }
